@@ -8,5 +8,11 @@
     <artifactId>nio</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <parent>
+        <groupId>exercise</groupId>
+        <artifactId>exercise</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     
 </project>
