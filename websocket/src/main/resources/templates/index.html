@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+       websocket_client();
+    });
+
+    function websocket_client() {
+        var hostaddr = window.location.host + "/websocket/p2ptext";
+        var url = 'ws://' + hostaddr;
+        var sock = new WebSocket(url);
+
+// 以下的 open(), onmessage(), onclose()
+// 对应到 ChatTextHandler 的
+// afterConnectionEstablished(), handleTextMessage(), afterConnectionClosed();
+
+        sock.open = function () {
+            alert("open successfully.");
+            sayMarco();
+        };
+        sock.open();
+        sock.onmessage = function (e) {
+            alert("onmessage");
+            alert(e);
+        };
+
+        sock.onclose = function () {
+            alert("close");
+        };
+
+        function sayMarco() {
+            sock.send("this is the websocket client.");
+        }
+    }
+
+
+</script>
+
+<body>
+
+<div id="websocket">
+    websocket div.
+</div>
+
+</body>
+</html>
